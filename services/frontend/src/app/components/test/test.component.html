@@ -1,0 +1,10 @@
+<button (click)="test()" class="btn btn-primary me-3">Get Products</button>
+<div *ngIf="show">
+  <h1>{{message}}</h1>
+  <div class="d-flex justify-content-start gap-2 flex-wrap">
+  <app-product-card
+    *ngFor="let product of content"
+    [test]="product">
+  </app-product-card>
+  </div>
+</div>

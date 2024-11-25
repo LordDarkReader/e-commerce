@@ -1,0 +1,7 @@
+1. Logika biznesowa
+2. logi
+3. kibana
+4. grafana
+5. prometheus
+6. email
+7. frontend
