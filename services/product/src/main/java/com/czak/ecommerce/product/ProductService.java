@@ -1,14 +1,20 @@
 package com.czak.ecommerce.product;
 
+import com.czak.ecommerce.category.Category;
 import com.czak.ecommerce.exception.ProductPurchaseException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,8 +25,25 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
 
-    public Integer createProduct(ProductRequest request) {
+    public Integer createProduct(ProductRequest request) throws IOException {
         var product = productMapper.toProduct(request);
+        return productRepository.save(product).getId();
+    }
+
+    public Integer createProduct2(MultipartFile file) throws IOException {
+        var product = new Product.ProductBuilder()
+                .name("sadsads")
+                .image(file.getBytes())
+                .price(new BigDecimal(2))
+                .category(Category.builder()
+                        .id(1)
+                        .description("fdfsd")
+                        .products(null)
+                        .build())
+                .availableQuantity(1)
+                .description("dasdsad")
+                .build();
+       // var product = productMapper.toProduct(request);
         return productRepository.save(product).getId();
     }
 
@@ -57,6 +80,10 @@ public class ProductService {
         return productRepository.findById(productId)
                 .map(productMapper::toProductResponse)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with the ID:: " + productId));
+    }
+
+    public List<ProductResponse> findByText(String text) {
+        return productRepository.findAllByText(text).stream().map(productMapper::toProductResponse).collect(Collectors.toList());
     }
 
     public List<ProductResponse> findAll() {

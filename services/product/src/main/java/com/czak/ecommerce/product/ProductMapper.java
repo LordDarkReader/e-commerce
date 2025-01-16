@@ -3,16 +3,19 @@ package com.czak.ecommerce.product;
 import com.czak.ecommerce.category.Category;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class ProductMapper {
-    public Product toProduct(ProductRequest request) {
+    public Product toProduct(ProductRequest request) throws IOException {
         return Product.builder()
                 .id(request.id())
                 .name(request.name())
                 .description(request.description())
-                .availableQuantity(request.availableQuantity())
+               // .availableQuantity(request.availableQuantity())
                 .category(Category.builder().id(request.categoryId()).build())
                 .price(request.price())
+                .image(request.image().getBytes())
                 .build();
     }
 

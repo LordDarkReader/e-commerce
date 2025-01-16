@@ -1,0 +1,28 @@
+<div style="width:1300px;  margin:0 auto; margin-bottom: 50px; margin-top: 30px">
+<form class="d-flex input-group w-auto">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search item"
+    aria-label="Search"
+    #filter
+  />
+  <button class="btn btn-outline-primary" type="button" (click)="search(filter.value)" >
+    Search
+  </button>
+</form>
+</div>
+
+<div style="width:1300px;  margin:0 auto;">
+<div *ngIf="show">
+  <div *ngIf="content.length === 0 ">
+    <h1 style="text-align: center">Brak wyników dla podanej frazy</h1>
+  </div>
+  <div class="d-flex justify-content-start gap-2 flex-wrap">
+    <app-product-card
+      *ngFor="let product of content"
+      [test]="product">
+    </app-product-card>
+  </div>
+</div>
+</div>

@@ -27,6 +27,8 @@ import { KeycloakService } from "./services/keycloak/keycloak.service";
 import { HttpTokenInterceptor } from "./services/interceptor/http-token.interceptor";
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { CommonModule, NgFor} from "@angular/common";
+import {FooterComponent} from "./components/footer/footer.component";
+import {SearchComponent} from "./components/search/search.component";
 
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init();
@@ -59,6 +61,8 @@ export function kcFactory(kcService: KeycloakService) {
     MdbValidationModule,
     NavbarComponent,
     HttpClientModule,
+    FooterComponent,
+    SearchComponent,
   ],
   providers: [
     HttpClient,

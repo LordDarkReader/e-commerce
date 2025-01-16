@@ -1,11 +1,12 @@
-export interface TestResponse {
+export interface AddProductRequest {
   id?: number;
   name?: string;
   description?: string;
-  availableQuantity?: number;
+  //availableQuantity?: number;
   price?: number;
   categoryId?: number;
   categoryName?: string;
   categoryDescription?: string;
-  image?: string;
+  image?: FormData;
+  //image?: File;
 }
