@@ -85,6 +85,7 @@ services:
     image: openzipkin/zipkin
     ports:
       - 9411:9411
+
   keycloak:
     container_name: keycloak-ms
     image: quay.io/keycloak/keycloak:24.0.2
@@ -97,6 +98,8 @@ services:
       - microservices-net
     command:
       - "start-dev"
+    volumes:
+      - keycloak:/data
 
   mail-dev:
     container_name: ms_mail_dev
@@ -107,6 +110,20 @@ services:
     networks:
       - microservices-net
 
+  minio:
+    container_name: minio
+    image: minio/minio
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - minio_data:/data
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_DEFAULT_BUCKETS=iamges_bucket
+    command: server /data --console-address ":9001"
+
 networks:
   microservices-net:
     driver: bridge
@@ -115,3 +132,6 @@ volumes:
   postgres:
   #pgadmin:
   mongo:
+  minio_data:
+#    driver: local
+  keycloak:

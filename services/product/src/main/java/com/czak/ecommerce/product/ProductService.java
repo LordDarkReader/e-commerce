@@ -2,11 +2,12 @@ package com.czak.ecommerce.product;
 
 import com.czak.ecommerce.category.Category;
 import com.czak.ecommerce.exception.ProductPurchaseException;
+import com.czak.ecommerce.service.StorageService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +24,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
+
+    private final StorageService storageService;
 
     public Integer createProduct(ProductRequest request) throws IOException {
         var product = productMapper.toProduct(request);
@@ -87,7 +89,10 @@ public class ProductService {
     }
 
     public List<ProductResponse> findAll() {
-        log.info("dsadasdasdasdada");
         return productRepository.findAll().stream().map(productMapper::toProductResponse).collect(Collectors.toList());
+    }
+
+    public String uploadImages(MultipartFile file) throws IOException {
+        return storageService.uploadFile(file.getOriginalFilename(), file.getInputStream(), MediaType.MULTIPART_FORM_DATA_VALUE);
     }
 }

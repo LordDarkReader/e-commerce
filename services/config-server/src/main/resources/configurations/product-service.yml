@@ -19,3 +19,11 @@ spring:
 
 server:
   port: 8050
+
+minio:
+  url: http://localhost:9000
+  access:
+    key: URc2UUgycaYmivkKIVTC
+    secret: cb7yz90x1eO9YmyODYoGXNwv2979Qr5XMsj9CMGe
+  bucket:
+    name: images

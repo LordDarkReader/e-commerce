@@ -4,14 +4,16 @@ import {AddProductRequest} from "../../models/add-product-request";
 import {TestResponse} from "../../models/test-response";
 import {Observable} from "rxjs";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
-import {AsyncPipe, NgIf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {ProductDescRequest} from "../../models/product-desc-request";
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
   imports: [
     NgIf,
-    AsyncPipe
+    AsyncPipe,
+    NgForOf
   ],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.scss'
@@ -34,6 +36,7 @@ export class AddProductComponent implements OnInit {
   fileInfos: Observable<any>;
 
   private addProductRequest: AddProductRequest = {};
+  private addProductDescRequest: ProductDescRequest = {};
 
   constructor(private testService: TestService) {
   }
@@ -44,7 +47,7 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fileInfos = this.testService.getFiles();
+    //this.fileInfos = this.testService.getFiles();
   }
 
   selectFile(event) {
@@ -96,6 +99,22 @@ export class AddProductComponent implements OnInit {
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;
       });
+
+    this.selectedFiles = undefined;
+  }
+
+  upload2() {
+    this.progress = 0;
+
+    this.addProductDescRequest.description = 'description1';
+    //this.addProductDescRequest.price = 29;
+    //this.addProductDescRequest.categoryId = 1;
+    this.addProductDescRequest.filename = 'name1';
+
+    this.currentFile = this.selectedFiles.item(0);
+
+    this.testService.upload2(this.currentFile, this.addProductDescRequest).subscribe();
+
 
     this.selectedFiles = undefined;
   }

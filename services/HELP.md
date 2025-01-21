@@ -3,7 +3,7 @@
 1. run docker desktop
 2. docker-compose up -d
 3. docker-compose down
-4. cd /frontend/ ng serve 
+4. cd /services/frontend/ ng serve 
 5. run config-service
 6. run discovery-service
 7. run other services

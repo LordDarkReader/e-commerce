@@ -1,87 +1,87 @@
 <div style="width:1300px; margin:0 auto;">
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-         aria-describedby="basic-addon1" />
-</div>
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-         aria-describedby="basic-addon2" />
-  <span class="input-group-text" id="basic-addon2">example.com</span>
-</div>
-<label for="basic-url" class="form-label">Your vanity URL</label>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" />
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
-  <span class="input-group-text">.00</span>
-</div>
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" />
-  <span class="input-group-text"></span>
-  <input type="text" class="form-control" placeholder="Server" aria-label="Server" />
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text">With textarea</span>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
-<div class="input-group mb-3">
-    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
-    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">
-      upload
-    </button>
-</div>
-  <div class="container row">
-    <div class="col-md-6">
-      <input type="file" (change)="onFileChanged($event)">
+<!--<div class="input-group mb-3">-->
+<!--  <span class="input-group-text" id="basic-addon1"></span>-->
+<!--  <input type="text" class="form-control" placeholder="Username" aria-label="Username"-->
+<!--         aria-describedby="basic-addon1" />-->
+<!--</div>-->
+<!--<div class="input-group mb-3">-->
+<!--  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"-->
+<!--         aria-describedby="basic-addon2" />-->
+<!--  <span class="input-group-text" id="basic-addon2">example.com</span>-->
+<!--</div>-->
+<!--<label for="basic-url" class="form-label">Your vanity URL</label>-->
+<!--<div class="input-group mb-3">-->
+<!--  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>-->
+<!--  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" />-->
+<!--</div>-->
+<!--<div class="input-group mb-3">-->
+<!--  <span class="input-group-text">$</span>-->
+<!--  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />-->
+<!--  <span class="input-group-text">.00</span>-->
+<!--</div>-->
+<!--<div class="input-group mb-3">-->
+<!--  <input type="text" class="form-control" placeholder="Username" aria-label="Username" />-->
+<!--  <span class="input-group-text"></span>-->
+<!--  <input type="text" class="form-control" placeholder="Server" aria-label="Server" />-->
+<!--</div>-->
+<!--<div class="input-group mb-3">-->
+<!--  <span class="input-group-text">With textarea</span>-->
+<!--  <textarea class="form-control" aria-label="With textarea"></textarea>-->
+<!--</div>-->
+<!--<div class="input-group mb-3">-->
+<!--    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />-->
+<!--    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">-->
+<!--      upload-->
+<!--    </button>-->
+<!--</div>-->
+<!--  <div class="container row">-->
+<!--    <div class="col-md-6">-->
+<!--      <input type="file" (change)="onFileChanged($event)">-->
 
-    </div>
-    <div class="col-md-6">
-      <input type="button" (click)="onUpload()" value="upload">
-    </div>
-  </div>
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--      <input type="button" (click)="onUpload()" value="upload">-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div class="col-md-6">
-    <input type="button" (click)="upload()" value="upload">
-  </div>
-</div>
+<!--  <div class="col-md-6">-->
+<!--    <input type="button" (click)="upload()" value="upload1">-->
+<!--  </div>-->
+<!--</div>-->
 
 
-<div *ngIf="currentFile" class="progress">
-  <div
-    class="progress-bar progress-bar-info progress-bar-striped"
-    role="progressbar"
-    attr.aria-valuenow="{{ progress }}"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    >
-<!--    [ngStyle]="{ width: progress + '%' }"-->
-<!--  >-->
-    {{ progress }}%
-  </div>
-</div>
+<!--<div *ngIf="currentFile" class="progress">-->
+<!--  <div-->
+<!--    class="progress-bar progress-bar-info progress-bar-striped"-->
+<!--    role="progressbar"-->
+<!--    attr.aria-valuenow="{{ progress }}"-->
+<!--    aria-valuemin="0"-->
+<!--    aria-valuemax="100"-->
+<!--    >-->
+<!--&lt;!&ndash;    [ngStyle]="{ width: progress + '%' }"&ndash;&gt;-->
+<!--&lt;!&ndash;  >&ndash;&gt;-->
+<!--    {{ progress }}%-->
+<!--  </div>-->
+<!--</div>-->
 
 <label class="btn btn-default">
   <input type="file" (change)="selectFile($event)" />
 </label>
 
-<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload2()">
   Upload2
 </button>
 
 <div class="alert alert-light" role="alert">{{ message }}</div>
-
-<div class="card">
-  <div class="card-header">List of Files</div>
-  <ul
-    class="list-group list-group-flush"
-    *ngFor="let file of fileInfos | async"
-  >
-    <li class="list-group-item">
-      <a href="{{ file.url }}">{{ file.name }}</a>
-    </li>
-  </ul>
 </div>
+<!--<div class="card">-->
+<!--  <div class="card-header">List of Files</div>-->
+<!--  <ul-->
+<!--    class="list-group list-group-flush"-->
+<!--    *ngFor="let file of fileInfos | async"-->
+<!--  >-->
+<!--    <li class="list-group-item">-->
+<!--      <a href="{{ file.url }}">{{ file.name }}</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
